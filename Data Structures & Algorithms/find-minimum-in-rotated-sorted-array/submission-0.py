@@ -1,0 +1,23 @@
+class Solution:
+    def findMin(self, nums: List[int]) -> int:
+        l = 0
+        r = len(nums) - 1
+        value = 1001
+
+        while l <= r:
+            m = l + ((r - l) // 2)
+            left, right, mid = nums[l], nums[r], nums[m]
+
+            print(f"l = {l}, m = {m}, r = {r}")
+            print(f"    {left},     {mid},     {right}")
+
+            if left > mid:
+                r = m - 1
+            elif right < mid:
+                l = m + 1
+            else:
+                r = m - 1
+            
+            value = min(value, mid)
+        
+        return value
